@@ -1,13 +1,12 @@
-import React, { Component, useMemo } from "react";
+import React, { Component, useMemo, Fragment, useContext } from "react";
 import * as THREE from "three";
 import { Canvas, useRender, useThree } from "react-three-fiber";
 import "./App.css";
-import { BoxGeometry } from "three";
-import { Thing2 } from "./componets/thing";
-
+import { BoxGeometry, Scene, PerspectiveCamera } from "three";
+import { Thing2, Main } from "./componets/thing";
 class App extends Component {
   render() {
-    function Thing({ vertices, color }) {
+    function Thing(a) {
       return (
         <group>
           {/* <BoxGeometry>
@@ -21,19 +20,21 @@ class App extends Component {
           <mesh
             // visible
             // userData={{ test: "hello" }}
-            // position={new THREE.Vector3(1, 2, 3)}
-            // rotation={new THREE.Euler(0, 0, 0)}
-            geometry={new THREE.BoxGeometry(1, 1, 1)}
+            position={new THREE.Vector3(-1, -1, -2)}
+            rotation={new THREE.Euler(1, 1, 1)}
+            geometry={new THREE.BoxGeometry(1, 2, 3)}
             material={
               new THREE.MeshBasicMaterial({
                 color: new THREE.Color("indianred")
               })
             }
             onClick={e => {
-              console.log("cl");
-              return Thing2();
+              console.log("cli");
+              // return <Thing2 />;
             }}
-            onHover={e => console.log("hover")}
+            onHover={e => {
+              console.log("onHover");
+            }}
             onUnhover={e => console.log("unhover")}
           >
             {/* <octahedronGeometry name="geometry" /> */}
@@ -47,26 +48,19 @@ class App extends Component {
         </group>
       );
     }
-    // function App() {
-    //   // gl is the webgl-renderer
-    //   // canvas the dom element that was created
-    //   // size the bounds of the view (which stretches 100% and auto-adjusts)
-    //   // viewport is the calculated screen-size, it's a function
-    //   const { gl, canvas, scene, camera, size, viewport } = useThree();
-    //   // Subscribes to the render-loop, gets cleaned up automatically when the component unmounts
-    //   // Add a "true" as the 2nd argument and you take over the render-loop
-    //   useRender(({ gl, canvas, scene, camera }) =>
-    //     console.log("i'm in the render-loop")
-    //   );
-    //   return <group />;
-    // }
 
     return (
-      // <App />
       <Canvas>
-        <Thing
-        // vertices={[[-1, 0, 0], [0, 1, 0], [1, 0, 0], [0, -1, 0], [-1, 0, 0]]}
-        />
+        {/* <Fragment> */}
+        <App />
+        {/* <Main /> 
+           {/* <Thing2 /> 
+           <Thing
+            onClick={() => {
+              return useRender(<Thing />);
+            }}
+          />
+        </Fragment>*/}
       </Canvas>
     );
   }

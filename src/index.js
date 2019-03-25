@@ -3,9 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { Appa } from "./componets/thing";
 // import Thing from "./componets/thing";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<Appa />, document.getElementById("root"));
 // ReactDOM.render(
 //   <Canvas>
 //     <Thing
